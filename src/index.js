@@ -106,6 +106,15 @@ io.on('connection', socket => {
     }
   })
 
+  socket.on('deleteLobby', lobbyId => {
+    console.log(lobbyId)
+    const lobby = lobbies.delete(lobbyId)
+    if (lobby) {
+      io.to(lobbyId).emit('LobbieDeleted', lobby)
+      console.log('Lobby eliminado')
+    }
+  })
+
   socket.on('startTournament', lobbyId => {
     console.log(lobbyId)
     console.log('Iniciando Sorteo')
