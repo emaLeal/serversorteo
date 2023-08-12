@@ -6,7 +6,7 @@ const app = express()
 const server = http.createServer(app)
 const io = new Server(server, {
   cors: {
-    origin: ['http://localhost:8080', 'http://localhost:3000', 'https://admin.smartie.com.co', 'https://eventos.smartie.com.co'],
+    origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE']
   }
 })
