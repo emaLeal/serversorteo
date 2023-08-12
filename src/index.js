@@ -108,10 +108,14 @@ io.on('connection', socket => {
 
   socket.on('deleteLobby', lobbyId => {
     console.log(lobbyId)
-    const lobby = lobbies.delete(lobbyId)
+    const lobby = lobbies.get(lobbyId)
     if (lobby) {
       io.to(lobbyId).emit('LobbieDeleted', lobby)
       console.log('Lobby eliminado')
+      const del = lobbies.delete(lobbyId)
+      if (del) {
+        console.log('eliminao')
+      }
     }
   })
 
