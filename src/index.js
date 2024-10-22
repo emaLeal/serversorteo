@@ -200,6 +200,8 @@ app.post('/api/imprimir', upload.single('file'), async (req, res) => {
   if (!req.file) {
     return res.status(400).send('No se ha subido ningún archivo')
   }
+  const printers = await printer.getPrinters()
+  console.log(printers)
 
   const filePath = join(process.cwd(), req.file.path)
 
