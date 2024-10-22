@@ -4,9 +4,11 @@ import { Server } from 'socket.io'
 import multer from 'multer'
 import printer from 'pdf-to-printer'
 import { join } from 'path'
+import cors from 'cors'
 import fs from 'fs'
 
 const app = express()
+app.use(cors())
 const server = http.createServer(app)
 const io = new Server(server, {
   cors: {
